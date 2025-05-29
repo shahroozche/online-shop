@@ -1,4 +1,6 @@
 from flask import Blueprint
+import models.product
+
 
 app = Blueprint('general',__name__)
 
