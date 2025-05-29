@@ -13,6 +13,7 @@ app.register_blueprint(users)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = config.SQLALCHEMY_DATABASE_URI
+app.config["SECRET_KEY"] = config.SECRET_KEY
 extensions.db.init_app(app)
 
 with app.app_context():
