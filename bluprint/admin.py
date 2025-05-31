@@ -1,5 +1,7 @@
 from flask import Blueprint,render_template,request,session,redirect,abort
 import config
+from models.product import Product
+from extensions import db
 
 app = Blueprint('admin',__name__)
 
@@ -34,6 +36,24 @@ def admin_dashboard():
 
 
 #admin products ard page address
-@app.route('/admin/products', methods = ['GET'])
+@app.route('/admin/products', methods = ['GET','POST'])
 def products():
-    return render_template("/admin/products.html")
+    if request.method == "GET":
+        products = Product.query.all()
+        return render_template("/admin/products.html",products = products )
+    else:
+        name = request.form.get('name',None)
+        description = request.form.get('description',None)
+        price = request.form.get('price',None)
+        active = request.form.get('active',None)
+
+        p = Product(name = name, description = description , price = price)
+        if  active == None:
+            p.active = 0
+        else:
+            p.active = 1
+        
+        db.session.add(p)
+        db.session.commit()
+
+        return "محصول اضافه شد"

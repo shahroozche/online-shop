@@ -1,11 +1,16 @@
 from sqlalchemy import *
 from sqlalchemy.orm import Mapped, mapped_column
 from extensions import db
+from sqlalchemy import *
+from extensions import db,get_current_time
+from flask_login import UserMixin
 
-class User(db.Model):
-    __tablename__= "users"
-    id: Mapped[int] = mapped_column(primary_key=True,index=True)
-    username:Mapped[str] = mapped_column(unique=True,nullable=False,index=True)
-    password: Mapped[str] = mapped_column(nullable=False,index=True)
-    phone: Mapped[str] = mapped_column(String(11),unique=True,index=True)
-    address: Mapped[str]= mapped_column(nullable=False,index=True)
+
+class User(db.Model, UserMixin):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True)
+    username = Column(String, unique=True, nullable=False, index=True)
+    password = Column(String, nullable=False, index=True)
+    phone = Column(String(11), nullable=False, index=True)
+    address = Column(String, nullable=False, index=True)
+    date_created = Column(String(15), default=get_current_time)

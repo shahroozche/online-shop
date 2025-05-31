@@ -4,5 +4,31 @@
 {% endblock %}
 
 {% block body %}
-<h1>coming soon .........</h1>
+<h1>ثبت محصول جدید</h1>
+<form action="#" method="post">
+    <label>نام محصول</label><br><input type="text" name="name" placeholder="نام محصول"><br>
+    <label>توضیحات محصول</label><br><textarea name="description"></textarea><br>
+    <label>قیمت کالا</label><br><input type="number" name="price" placeholder="قیمت"><br>
+    <label>محصول فعال است</label><br><input type="checkbox" value="1" name="active"><br>
+    <input type="submit" name="send">
+</form>
+
+<h2>محصولات ثبت شده</h2>
+<table>
+    <tr>
+        <th>اسم</th>
+        <th>توضیحات</th>
+        <th>قیمت</th>
+        <th>فعال</th>
+    </tr>
+{% for p in products %}
+    <tr>
+        <td>{{p.name}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.price}}</td>
+        <td>{{"فعال" if p.active == 1 else "غیر فعال"}}</td>
+    </tr>
+{% endfor %}
+</table>
+
 {% endblock %}
