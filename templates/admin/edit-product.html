@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block header %}
+    <title>edit-product</title>
+{% endblock %}
+
+{% block body %}
+<h1>ثبت محصول جدید</h1>
+<form action="#" method="post">
+    <label>نام محصول</label><br><input type="text" value="{{product.name}}" name="name" placeholder="نام محصول"><br>
+    <label>توضیحات محصول</label><br><textarea name="description">{{product.description}}</textarea><br>
+    <label>قیمت کالا</label><br><input type="number" value="{{product.price}}" name="price" placeholder="قیمت"><br>
+    <label>محصول فعال است</label><br><input type="checkbox" value="1" name="active" {{"checked" if product.active == 1 }}><br>
+    <input type="submit" name="send">
+</form>
+
+
+{% endblock %}
