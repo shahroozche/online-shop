@@ -5,7 +5,8 @@
 
 {% block body %}
 <h1>ثبت محصول جدید</h1>
-<form action="#" method="post">
+<form action="#" method="post">s
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
     <label>نام محصول</label><br><input type="text" value="{{product.name}}" name="name" placeholder="نام محصول"><br>
     <label>توضیحات محصول</label><br><textarea name="description">{{product.description}}</textarea><br>
     <label>قیمت کالا</label><br><input type="number" value="{{product.price}}" name="price" placeholder="قیمت"><br>

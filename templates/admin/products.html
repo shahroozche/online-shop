@@ -6,6 +6,7 @@
 {% block body %}
 <h1>ثبت محصول جدید</h1>
 <form action="#" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <label>نام محصول</label><br><input type="text" name="name" placeholder="نام محصول"><br>
     <label>توضیحات محصول</label><br><textarea name="description"></textarea><br>
     <label>قیمت کالا</label><br><input type="number" name="price" placeholder="قیمت"><br>
