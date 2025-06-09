@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block header %}
+    <title>فروشگاه اینترنتی بیزی کسب</title>
+{% endblock %}
+
+{% block body %}
+    صفحه اصلی سایت<br>
+
+    {% for p in products %}
+        {{p.name}}
+        {{p.price}}<br>
+    {% endfor %}
+{% endblock %}
