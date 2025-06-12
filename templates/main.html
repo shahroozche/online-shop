@@ -8,6 +8,6 @@
 
     {% for p in products %}
         {{p.name}}
-        {{p.price}}<br>
+        {{p.price}} <a href="{{url_for("general.product", id = p.id, name = p.name) }}">{{p.name}}</a> <br> 
     {% endfor %}
 {% endblock %}
